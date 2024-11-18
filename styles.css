@@ -121,10 +121,9 @@ main {
 
 .about ul {
     padding: 15px 20px;
-    list-style-type: disc; 
-    margin-left: 40px; 
+    list-style-type: none; 
+    margin-left: 0; 
 }
-
 
 /*adopt page*/
 .search {
