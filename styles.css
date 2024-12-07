@@ -87,10 +87,10 @@ main {
 }
 
 .adopt .pet-grid {
-    display: flex;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
     justify-content: center;
-    flex-wrap: wrap;
     margin-top: 30px;
 }
 
@@ -99,9 +99,10 @@ main {
     border: 1px solid #DDD;
     border-radius: 8px;
     padding: 15px;
-    width: 200px;
     text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 
 .adopt .pet-card img {
     width: 100%;
@@ -316,6 +317,18 @@ main {
 @media (max-width: 480px) {
     .food-card {
         width: 100%; 
+    }
+}
+
+@media (max-width: 768px) {
+    .adopt .pet-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 480px) {
+    .adopt .pet-grid {
+        grid-template-columns: 1fr; 
     }
 }
 

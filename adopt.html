@@ -5,6 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adopt</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        function filterPets(event) {
+            event.preventDefault(); 
+
+            const species = document.getElementById('species').value.toLowerCase();
+            const breed = document.getElementById('breed').value.toLowerCase();
+            const age = document.getElementById('age').value.toLowerCase();
+            const color = document.getElementById('color').value.toLowerCase();
+            
+            const petCards = document.querySelectorAll('.pet-card');
+
+            petCards.forEach(card => {
+                const cardSpecies = card.dataset.species.toLowerCase();
+                const cardBreed = card.dataset.breed.toLowerCase();
+                const cardAge = card.dataset.age.toLowerCase();
+                const cardColor = card.dataset.color.toLowerCase();
+
+                const matchesSpecies = !species || cardSpecies.includes(species);
+                const matchesBreed = !breed || cardBreed.includes(breed);
+                const matchesAge = !age || cardAge.includes(age);
+                const matchesColor = !color || cardColor.includes(color);
+
+                if (matchesSpecies && matchesBreed && matchesAge && matchesColor) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </head>
 <body>
 
@@ -25,7 +55,7 @@
     <main>
         <section id="search" class="search">
             <h2>Find Your Perfect Pet</h2>
-            <form>
+            <form onsubmit="filterPets(event)">
                 <div class="form-group">
                     <label for="species">Species</label>
                     <select id="species" name="species">
@@ -41,7 +71,7 @@
                 </div>
                 <div class="form-group">
                     <label for="age">Age</label>
-                    <input type="number" id="age" name="age" placeholder="Enter Age">
+                    <input type="text" id="age" name="age" placeholder="Enter Age">
                 </div>
                 <div class="form-group">
                     <label for="color">Color</label>
@@ -51,24 +81,57 @@
             </form>
         </section>
         
-
         <section id="adopt" class="adopt">
-            <div class="pet-grid">
-                <div class="pet-card" data-species="dog" data-breed="Golden Retriever" data-age="adult" data-color="golden">
-                    <img src="images/simba.jpg" alt="Dog">
-                    <h3>Simba</h3>
-                    <p>4 Years Old • Friendly & Energetic</p>
+            <section id="adopt" class="adopt">
+                <div class="pet-grid">
+                    <div class="pet-card" data-species="dog" data-breed="Border Collie" data-age="adult" data-color="white">
+                        <img src="images/simba.jpg" alt="Dog">
+                        <h3>Simba</h3>
+                        <p>2 Years Old • Friendly & Energetic</p>
+                    </div>
+                    <div class="pet-card" data-species="cat" data-breed="American Wirehair" data-age="young" data-color="white">
+                        <img src="images/Jack.jpg" alt="Cat">
+                        <h3>Jack</h3>
+                        <p>4 Years Old • Sweet & Calm</p>
+                    </div>
+                    <div class="pet-card" data-species="cat" data-breed="Tabby" data-age="young" data-color="brown">
+                        <img src="images/Shinchan.jpg" alt="Cat">
+                        <h3>Oggy</h3>
+                        <p>3 Years Old • Loyal & Playful</p>
+                    </div>
+                    <div class="pet-card" data-species="dog" data-breed="Labrador Retriever" data-age="adult" data-color="cream">
+                        <img src="images/labrador.jpg" alt="Dog">
+                        <h3>Buddy</h3>
+                        <p>2 Year Old • Playful & Gentle</p>
+                    </div>
+                    <div class="pet-card" data-species="dog" data-breed="German Shepherd" data-age="adult" data-color="golden">
+                        <img src="images/German-Shepherd.jpg" alt="Dog">
+                        <h3>Max</h3>
+                        <p>5 Years Old • Loyal & Protective</p>
+                    </div>
+                    <div class="pet-card" data-species="cat" data-breed="Persian" data-age="adult" data-color="white">
+                        <img src="images/persian.jpg" alt="Cat">
+                        <h3>Luna</h3>
+                        <p>3 Years Old • Calm & Elegant</p>
+                    </div>
+                    <div class="pet-card" data-species="bird" data-breed="Cockatiel" data-age="adult" data-color="yellow">
+                        <img src="images/Cockatiel.jpg" alt="Bird">
+                        <h3>Sunny</h3>
+                        <p>1 Years Old • Chirpy & Social</p>
+                    </div>
+                    <div class="pet-card" data-species="dog" data-breed="Pug" data-age="puppy" data-color="cream">
+                        <img src="images/Pug.jpeg" alt="Dog">
+                        <h3>Charlie</h3>
+                        <p>6 Months Old • Playful & Adorable</p>
+                    </div>
+                    <div class="pet-card" data-species="cat" data-breed="Bengal" data-age="young" data-color="spotted">
+                        <img src="images/Bengal.jpg" alt="Cat">
+                        <h3>Leo</h3>
+                        <p>2 Years Old • Energetic & Intelligent</p>
+                    </div>
                 </div>
-                <div class="pet-card" data-species="cat" data-breed="Siamese" data-age="young" data-color="cream">
-                    <img src="images/Jack.jpg" alt="Cat">
-                    <h3>Jack</h3>
-                    <p>2 Year Old • Sweet & Calm</p>
-                </div>
-                <div class="pet-card" data-species="dog" data-breed="Beagle" data-age="young" data-color="brown">
-                    <img src="images/Shinchan.jpg" alt="Dog">
-                    <h3>Oggy</h3>
-                    <p>3 Years Old • Loyal & Playful</p>
-                </div>
+            </section>
+            
             </div>
         </section>
     </main>
@@ -79,4 +142,3 @@
 
 </body>
 </html>
-
